@@ -135,7 +135,7 @@
 [commit]
 
 	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = false
+	gpgSign = true
 
 [diff]
 
@@ -185,3 +185,10 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[user]
+	name = Jeff Tang
+	email = mrjefftang@users.noreply.github.com
+[gpg]
+	program = /usr/local/bin/krgpg
+[tag]
+	forceSignAnnotated = true

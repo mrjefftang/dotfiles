@@ -90,3 +90,5 @@ export PATH=$PATH:$GOPATH/bin
 
 # Metasploit
 export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
+
+export GPG_TTY=$(tty)
