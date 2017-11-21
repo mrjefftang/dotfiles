@@ -1,27 +1,27 @@
-" Tomorrow Night Eighties - Full Colour and 256 Colour
+" Tomorrow Night Blue - Full Colour and 256 Colour
 " http://chriskempson.com
 "
 " Hex colour conversion functions borrowed from the theme "Desert256""
 
 " Default GUI Colours
-let s:foreground = "cccccc"
-let s:background = "2d2d2d"
-let s:selection = "515151"
-let s:line = "393939"
-let s:comment = "999999"
-let s:red = "f2777a"
-let s:orange = "f99157"
-let s:yellow = "ffcc66"
-let s:green = "99cc99"
-let s:aqua = "66cccc"
-let s:blue = "6699cc"
-let s:purple = "cc99cc"
+let s:foreground = "ffffff"
+let s:background = "002451"
+let s:selection = "003f8e"
+let s:line = "00346e"
+let s:comment = "7285b7"
+let s:red = "ff9da4"
+let s:orange = "ffc58f"
+let s:yellow = "ffeead"
+let s:green = "d1f1a9"
+let s:aqua = "99ffff"
+let s:blue = "bbdaff"
+let s:purple = "ebbbff"
 let s:window = "4d5057"
 
 hi clear
 syntax reset
 
-let g:colors_name = "Tomorrow-Night-Eighties"
+let g:colors_name = "Tomorrow-Night-Blue"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Returns an approximate grey index for the given grey level
@@ -367,7 +367,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Diff Highlighting
 	call <SID>X("diffAdd", "", "4c4e39", "")
 	call <SID>X("diffDelete", s:background, s:red, "")
-	call <SID>X("diffChange", "", "2B5B77", "")
+	call <SID>X("diffChange", "", "2b5b77", "")
 	call <SID>X("diffText", s:line, s:blue, "")
 
 	" ShowMarks Highlighting
