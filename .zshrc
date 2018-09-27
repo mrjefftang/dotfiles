@@ -61,6 +61,7 @@ alias man=man-preview
 alias i2cssh="i2cssh -b"
 alias csshx="i2cssh -b"
 alias notes="vi ~/Documents/workspace.md"
+alias msfconsole="docker run -it -e LHOST=$(ipconfig getifaddr en0) -p 4444:4444 -v ~/Projects/rapid7/metasploit-framework:/usr/src/metasploit-framework metasploit-framework"
 
 # Environment settings
 # export PS1="%{%F{green}%}[%{%F{red}%}%n%{%f%}@%{%F{blue}%}%m %{%F{yellow}%}%~ %{%F{green}%}]%{%F{white}%} %{$%f%}  "
@@ -84,11 +85,3 @@ fi
 # Go
 export GOPATH=~/Projects/go
 export PATH=$PATH:$GOPATH/bin
-
-# Macvim
-# export VIM_APP_DIR=/opt/homebrew-cask/Caskroom/macvim/7.4-77/MacVim-snapshot-77
-
-# Metasploit
-export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
-
-export GPG_TTY=$(tty)

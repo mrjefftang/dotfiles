@@ -204,3 +204,6 @@ nmap <silent> <leader>d <Plug>DashSearch
 " Commands on Startup
 "autocmd VimEnter * NERDTree " Autoopen NERDTree
 "autocmd VimEnter * wincmd p " Set focus to file window
+set fileencodings=utf-8,cp936,gbk,utf-16le
+
+"
