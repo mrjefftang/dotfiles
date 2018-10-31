@@ -35,10 +35,31 @@ ZSH_THEME="bullet-train"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Bullettrain Settings
-BULLETTRAIN_STATUS_EXIT_SHOW=true
-BULLETTRAIN_CONTEXT_SHOW=true
-BULLETTRAIN_IS_SSH_CLIENT=true
 BULLETTRAIN_PROMPT_SEPARATE_LINE=false
+BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+BULLETTRAIN_STATUS_EXIT_SHOW=true
+BULLETTRAIN_TIME_12HR=true
+BULLETTRAIN_IS_SSH_CLIENT=true
+
+BULLETTRAIN_PROMPT_ORDER=(
+    time
+    status
+    custom
+    context
+    dir
+    screen
+    perl
+    ruby
+    virtualenv
+    aws
+    go
+    rust
+    elixir
+    git
+    hg
+    cmd_exec_time
+)
+
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -58,8 +79,6 @@ alias vi=mvim
 alias vim=mvim -f
 alias openssl='$(brew --prefix openssl)/bin/openssl'
 alias man=man-preview
-alias i2cssh="i2cssh -b"
-alias csshx="i2cssh -b"
 alias notes="vi ~/Documents/workspace.md"
 alias msfconsole="docker run -it -e LHOST=$(ipconfig getifaddr en0) -p 4444:4444 -v ~/Projects/rapid7/metasploit-framework:/usr/src/metasploit-framework metasploit-framework"
 
@@ -85,3 +104,6 @@ fi
 # Go
 export GOPATH=~/Projects/go
 export PATH=$PATH:$GOPATH/bin
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
