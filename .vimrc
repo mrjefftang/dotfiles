@@ -25,9 +25,9 @@ let mapleader=","
 set binary
 set noeol
 " Centralize backups, swapfiles and undo history
-set backupdir=/tmp
-set directory=/tmp
-set undodir=/tmp
+set backupdir=~/.vim/.tmp//
+set directory=~/.vim/.tmp//
+set undodir=~/.vim/.tmp//
 
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
@@ -123,13 +123,10 @@ function! StripWhitespace()
 	call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
-" Enable file type detection
-filetype on
-" Enable filetype plugin
-filetype plugin on
 " Treat .json files as .js
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 " Treat .md files as Markdown
@@ -158,7 +155,7 @@ else
 end
 
 " Set window size (80x120) + 31 for NERDTree
-set columns=191
+set columns=121
 set lines=120
 
 " Highlight matching brace/parenthesis/bracket
@@ -174,15 +171,19 @@ for prefix in ['n', 'v']
   endfor
 endfor
 
-" Pathogen
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
 
-" NERDTree
-let g:NERDTreeShowHidden=1
-nnoremap <C-t> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-syntastic/syntastic'
+call vundle#end()
+
+" Enable filetype plugin
+filetype plugin indent on
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -198,12 +199,5 @@ set statusline+=%*
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" Dash
-nmap <silent> <leader>d <Plug>DashSearch
-
 " Commands on Startup
-"autocmd VimEnter * NERDTree " Autoopen NERDTree
-"autocmd VimEnter * wincmd p " Set focus to file window
-set fileencodings=utf-8,cp936,gbk,utf-16le
 
-"
