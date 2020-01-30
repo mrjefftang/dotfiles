@@ -80,6 +80,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 if which mvim > /dev/null; then
     export EDITOR=mvim
+    alias vi=mvim
 elif which vim > /dev/null; then
     export EDITOR=vim
 fi
