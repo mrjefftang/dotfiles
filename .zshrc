@@ -66,28 +66,26 @@ BULLETTRAIN_PROMPT_ORDER=(
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git brew osx python pip screen vagrant)
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/.zsh_secret
+test -e "${ZSH}/oh-my-zsh.sh" && source "${ZSH}/oh-my-zsh.sh"
+test -e "${HOME}/.zsh_secret" && source "${HOME}/.zsh_secret"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # ssh-agent
 # zstyle :omz:plugins:ssh-agent agent-forwarding on
 # zstyle :omz:plugins:ssh-agent identities id_rsa
 
 # Aliases
-alias zshconfig="vi ~/.zshrc"
-alias vi=mvim
-alias vim=mvim -f
-alias openssl='$(brew --prefix openssl)/bin/openssl'
-alias man=man-preview
-alias notes="vi ~/Documents/workspace.md"
-alias msfconsole="docker run -it -e LHOST=$(ipconfig getifaddr en0) -p 4444:4444 -v ~/Projects/rapid7/metasploit-framework:/usr/src/metasploit-framework metasploit-framework"
-
 # Environment settings
 # export PS1="%{%F{green}%}[%{%F{red}%}%n%{%f%}@%{%F{blue}%}%m %{%F{yellow}%}%~ %{%F{green}%}]%{%F{white}%} %{$%f%}  "
-export EDITOR=mvim
+
+if which mvim > /dev/null; then
+    export EDITOR=mvim
+elif which vim > /dev/null; then
+    export EDITOR=vim
+fi
 
 # Pyenv
-export PATH=$PATH:/usr/local/opt/pyenv/bin
+export PATH=/usr/local/opt/pyenv/bin:$HOME/.pyenv/bin:$PATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if which pyenv > /dev/null; then 
     eval "$(pyenv init -)"; 
@@ -95,15 +93,8 @@ if which pyenv > /dev/null; then
 fi
 
 # Rbenv
-export PATH=$PATH:/usrlocal/opt/rbenv/bin
+export PATH=/usr/local/opt/rbenv/bin:$PATH
 export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then 
     eval "$(rbenv init -)";
 fi
-
-# Go
-export GOPATH=~/Projects/go
-export PATH=$PATH:$GOPATH/bin
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
