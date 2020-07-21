@@ -1,6 +1,6 @@
 " Change VIM theme
 set background=dark
-colorscheme Tomorrow-Night-Blue
+colorscheme Tomorrow-Night-Bright
 set guifont=Source_Code_Pro_for_Powerline
 
 " Make Vim more useful
