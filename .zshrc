@@ -68,7 +68,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew osx python pip screen vagrant)
+plugins=(git brew osx python pip screen vagrant evalcache)
 
 test -e "${ZSH}/oh-my-zsh.sh" && source "${ZSH}/oh-my-zsh.sh"
 test -e "${HOME}/.zsh_secret" && source "${HOME}/.zsh_secret"
@@ -85,21 +85,28 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if which mvim > /dev/null; then
     export EDITOR=mvim
     alias vi=mvim
+    alias vim=mvim
 elif which vim > /dev/null; then
     export EDITOR=vim
 fi
+
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
 
 # Pyenv
 export PATH=/usr/local/opt/pyenv/bin:$HOME/.pyenv/bin:$PATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if which pyenv > /dev/null; then 
-    eval "$(pyenv init -)"; 
-    eval "$(pyenv virtualenv-init -)"
+    #eval "$(pyenv init -)"; 
+    _evalcache pyenv init -
+    #eval "$(pyenv virtualenv-init -)"
+    _evalcache pyenv virtualenv-init
 fi
 
 # Rbenv
 export PATH=/usr/local/opt/rbenv/bin:$PATH
 export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then 
-    eval "$(rbenv init -)";
+    #eval "$(rbenv init -)";
+    _evalcache rbenv init -
 fi
